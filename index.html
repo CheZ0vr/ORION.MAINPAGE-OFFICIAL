@@ -179,8 +179,8 @@ h1{
 .blue-btn{background:#50b4ff;color:white;}
 .yellow-btn{background:#ffd250;color:black;}
 
-/* CHECKOUT */
-.checkout{
+/* CHECKOUT FORM */
+.checkout-container{
     max-width:650px;
     margin:25px auto 0;
     background:rgba(255,255,255,0.03);
@@ -190,14 +190,44 @@ h1{
     text-align:left;
 }
 
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    opacity:0.8;
+    margin-bottom:6px;
+    letter-spacing:1px;
+}
+
 input, select{
     width:100%;
     padding:12px;
-    margin-bottom:10px;
     border-radius:10px;
     border:1px solid rgba(255,255,255,0.2);
     background:transparent;
     color:white;
+    font-family:Poppins,sans-serif;
+    font-size:13px;
+    box-sizing:border-box;
+}
+
+input::placeholder, select{
+    color:rgba(255,255,255,0.5);
+}
+
+input:focus, select:focus{
+    outline:none;
+    border-color:rgba(127,0,255,0.5);
+    box-shadow:0 0 15px rgba(127,0,255,0.2);
+}
+
+.two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
 .primary{
@@ -212,6 +242,10 @@ input, select{
     cursor:pointer;
 }
 
+.primary:hover{
+    box-shadow:0 0 30px rgba(127,0,255,0.4);
+}
+
 .summary{
     margin-top:15px;
     padding:12px;
@@ -220,6 +254,14 @@ input, select{
     font-size:12px;
     opacity:0.85;
     white-space:pre-line;
+}
+
+.cart-items{
+    background:rgba(255,255,255,0.02);
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
+    font-size:13px;
 }
 
 /* ===== BOTTLE ===== */
@@ -296,6 +338,12 @@ input, select{
     font-size:10px;
     opacity:0.65;
     margin-top:6px;
+}
+
+@media(max-width:768px){
+    .two-col{
+        grid-template-columns:1fr;
+    }
 }
 
 </style>
@@ -383,27 +431,67 @@ input, select{
 
 <h1>CHECKOUT</h1>
 
-<input id="name" placeholder="Name">
-<input id="address" placeholder="Address">
-<input id="city" placeholder="City">
-<input id="phone" placeholder="WhatsApp">
+<div class="checkout-container">
 
-<select id="currency">
-<option>USD</option>
-<option>IDR</option>
-</select>
+    <!-- CART SUMMARY -->
+    <div class="form-group">
+        <label>📦 YOUR ORDER</label>
+        <div class="cart-items" id="cartDisplay">No items</div>
+    </div>
 
-<select id="payment">
-<option>WhatsApp Order</option>
-<option>Stripe (soon)</option>
-<option>PayPal (soon)</option>
-</select>
+    <!-- CUSTOMER INFO -->
+    <div class="form-group">
+        <label>👤 FULL NAME</label>
+        <input id="name" placeholder="Enter your name" type="text">
+    </div>
 
-<div class="checkout" id="cart"></div>
+    <!-- ADDRESS -->
+    <div class="form-group">
+        <label>📍 ADDRESS</label>
+        <input id="address" placeholder="Street address" type="text">
+    </div>
 
-<div class="summary" id="summary">EMPTY</div>
+    <!-- CITY -->
+    <div class="form-group">
+        <label>🏙️ CITY</label>
+        <input id="city" placeholder="City" type="text">
+    </div>
 
-<button class="primary" onclick="checkout()">CONFIRM REALITY</button>
+    <!-- WHATSAPP -->
+    <div class="form-group">
+        <label>📱 WHATSAPP NUMBER</label>
+        <input id="phone" placeholder="e.g., +62 812 3456 7890" type="text">
+    </div>
+
+    <!-- CURRENCY -->
+    <div class="form-group">
+        <label>💱 CURRENCY</label>
+        <select id="currency">
+            <option value="USD">USD ($)</option>
+            <option value="IDR">IDR (Rp)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+        </select>
+    </div>
+
+    <!-- PAYMENT METHOD -->
+    <div class="form-group">
+        <label>💳 PAYMENT METHOD</label>
+        <select id="payment">
+            <option value="whatsapp">WhatsApp Order</option>
+            <option value="stripe">Stripe (Coming Soon)</option>
+            <option value="paypal">PayPal (Coming Soon)</option>
+            <option value="bank">Bank Transfer (Coming Soon)</option>
+        </select>
+    </div>
+
+    <!-- ORDER TOTAL -->
+    <div class="summary" id="summary">TOTAL: $0.00 + $10 SHIPPING</div>
+
+    <!-- SUBMIT -->
+    <button class="primary" onclick="checkout()">CONFIRM REALITY</button>
+
+</div>
 
 </div>
 
@@ -413,86 +501,96 @@ let cart=[];
 let prices={};
 
 function go(i){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(['home','story','scents','checkout'][i]).classList.add('active');
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(['home','story','scents','checkout'][i]).classList.add('active');
 
-const s=document.getElementById('slider');
-s.style.width="25%";
-s.style.transform=`translateX(${i*100}%)`;
+    const s=document.getElementById('slider');
+    s.style.width="25%";
+    s.style.transform=`translateX(${i*100}%)`;
 }
 
 function add(name,price){
-cart.push(name);
-prices[name]=price;
-render();
-go(3);
+    cart.push(name);
+    prices[name]=price;
+    render();
+    go(3);
 }
 
 function render(){
+    let cartDisplay=document.getElementById('cartDisplay');
+    let count={};
+    let total=0;
 
-let box=document.getElementById('cart');
-let count={};
-let total=0;
+    cart.forEach(i=>count[i]=(count[i]||0)+1);
 
-cart.forEach(i=>count[i]=(count[i]||0)+1);
+    let html="";
 
-let html="";
+    for(let k in count){
+        let p=prices[k]*count[k];
+        total+=p;
+        html+=`${count[k]}x ${k} — $${p.toFixed(2)}\n`;
+    }
 
-for(let k in count){
-let p=prices[k]*count[k];
-total+=p;
-html+=`${count[k]}x ${k} — $${p.toFixed(2)}\n`;
-}
+    if(cart.length===0){
+        cartDisplay.innerText="No items";
+    } else {
+        cartDisplay.innerText=html;
+    }
 
-box.innerHTML=html;
-
-document.getElementById('summary').innerText =
-`TOTAL: $${total.toFixed(2)} + $10 SHIPPING`;
-
+    document.getElementById('summary').innerText =
+    `TOTAL: $${total.toFixed(2)} + $10 SHIPPING`;
 }
 
 function checkout(){
+    if(cart.length===0){
+        alert("EMPTY CART");
+        return;
+    }
 
-if(cart.length===0)return alert("EMPTY");
+    let name=document.getElementById('name').value||"Customer";
+    let address=document.getElementById('address').value||"-";
+    let city=document.getElementById('city').value||"-";
+    let phone=document.getElementById('phone').value||"-";
+    let currency=document.getElementById('currency').value;
+    let payment=document.getElementById('payment').value;
 
-let name=document.getElementById('name').value||"Customer";
-let address=document.getElementById('address').value||"-";
-let city=document.getElementById('city').value||"-";
-let phone=document.getElementById('phone').value||"-";
-let currency=document.getElementById('currency').value;
+    let count={};
+    cart.forEach(i=>count[i]=(count[i]||0)+1);
 
-let count={};
-cart.forEach(i=>count[i]=(count[i]||0)+1);
+    let items="";
+    let total=0;
 
-let items="";
-let total=0;
+    for(let k in count){
+        let p=prices[k]*count[k];
+        total+=p;
+        items+=`- ${count[k]}x ${k} = $${p.toFixed(2)}\n`;
+    }
 
-for(let k in count){
-let p=prices[k]*count[k];
-total+=p;
-items+=`- ${count[k]}x ${k} = $${p.toFixed(2)}\n`;
-}
+    let shipping=10;
+    let final=total+shipping;
 
-let shipping=10;
-let final=total+shipping;
+    let msg=
+`🌌 ORION ORDER CONFIRMATION
 
-let msg=
-`ORION ORDER CONFIRMATION
+👤 Customer: ${name}
+📱 WhatsApp: ${phone}
+📍 Address: ${address}, ${city}
 
-Customer: ${name}
-Phone: ${phone}
-Address: ${address}, ${city}
-
-ITEMS:
+📦 ITEMS:
 ${items}
 
-Shipping: $${shipping}
-TOTAL: $${final.toFixed(2)} ${currency}
+💱 Currency: ${currency}
+💳 Payment: ${payment}
 
-Status: Pending Reality Approval`;
+💰 TOTAL:
+Subtotal: $${total.toFixed(2)}
+Shipping: $${shipping}.00
+━━━━━━━━━━━━━━━━
+FINAL: $${final.toFixed(2)} ${currency}
 
-window.open("https://wa.me/628133030489?text="+encodeURIComponent(msg));
+✨ Status: Pending Reality Approval`;
 
+    window.open("https://wa.me/628133030489?text="+encodeURIComponent(msg));
 }
 
 </script>
