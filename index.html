@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORION | Cosmic Fragrance House</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:#050508;
+    color:#f5f5f5;
+    overflow-x:hidden;
+}
+
+/* ================= COSMIC BACKGROUND ================= */
+.parallax{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+}
+
+.layer1,.layer2,.layer3{
+    position:absolute;
+    width:200%;
+    height:200%;
+}
+
+.layer1{
+    background: radial-gradient(circle at 20% 20%, rgba(160,90,255,0.18), transparent 45%),
+                radial-gradient(circle at 80% 70%, rgba(0,200,255,0.12), transparent 45%);
+    animation: drift 90s linear infinite;
+}
+
+.layer2{
+    background: radial-gradient(circle at 40% 60%, rgba(255,0,200,0.08), transparent 50%);
+    animation: drift 70s linear infinite;
+}
+
+.layer3{
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size:60px 60px;
+    opacity:0.2;
+    animation: drift 50s linear infinite;
+}
+
+@keyframes drift{
+    from{transform:translate(0,0);}
+    to{transform:translate(-10%,-10%);}
+}
+
+/* ================= NAV CMS ================= */
+nav{
+    position:fixed;
+    top:15px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:18px;
+    padding:10px 18px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.12);
+    backdrop-filter:blur(14px);
+    border-radius:999px;
+    z-index:10;
+}
+
+nav button{
+    background:none;
+    border:none;
+    color:white;
+    font-size:12px;
+    letter-spacing:2px;
+    opacity:0.7;
+    cursor:pointer;
+}
+
+nav button:hover{
+    opacity:1;
+    color:#b58cff;
+}
+
+/* ================= PAGES ================= */
+.page{
+    display:none;
+    padding:130px 20px;
+    text-align:center;
+}
+
+.page.active{
+    display:block;
+}
+
+/* ================= TITLE ================= */
+h1{
+    font-family:'Playfair Display',serif;
+    font-size:72px;
+    letter-spacing:14px;
+    background:linear-gradient(90deg,#fff,#b58cff,#00d4ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* ================= STORY ================= */
+.story{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    opacity:0.8;
+}
+
+/* ================= GRID ================= */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+    max-width:1100px;
+    margin:auto;
+}
+
+/* ================= CARD ================= */
+.card{
+    padding:26px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.03);
+    border:2px solid rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+    transition:0.25s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(160,90,255,0.25);
+}
+
+/* COLORS */
+.eclipse{border-color:rgba(255,60,60,0.6);}
+.breeze{border-color:rgba(80,180,255,0.6);}
+.magnetico{border-color:rgba(255,210,80,0.6);}
+
+.card h3{
+    font-family:'Playfair Display',serif;
+    margin-bottom:6px;
+}
+
+.card p{
+    opacity:0.85;
+}
+
+/* ================= BUTTON ================= */
+.btn{
+    margin-top:14px;
+    padding:16px;
+    border-radius:14px;
+    border:none;
+    width:100%;
+    font-weight:800;
+    cursor:pointer;
+    letter-spacing:1px;
+}
+
+/* ================= CHECKOUT ================= */
+.checkout{
+    max-width:650px;
+    margin:auto;
+    padding:20px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.12);
+    backdrop-filter:blur(12px);
+}
+
+.item{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+/* ================= INPUT ================= */
+input{
+    padding:12px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.2);
+    background:transparent;
+    color:white;
+    width:60%;
+    margin-bottom:20px;
+    text-align:center;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){
+    .grid{grid-template-columns:1fr;}
+    h1{font-size:42px;}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="parallax">
+    <div class="layer1"></div>
+    <div class="layer2"></div>
+    <div class="layer3"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+    <button onclick="show('home')">HOME</button>
+    <button onclick="show('story')">STORY</button>
+    <button onclick="show('scents')">SCENTS</button>
+    <button onclick="show('checkout')">CHECKOUT</button>
+</nav>
+
+<!-- HOME -->
+<div class="page active" id="home">
+    <h1>ORION</h1>
+    <p>Cosmic handcrafted fragrance universe</p>
+</div>
+
+<!-- STORY -->
+<div class="page" id="story">
+    <h1>OUR STORY</h1>
+    <div class="story">
+        ORION is a cosmic memory system translated into scent.
+        Each bottle contains emotion, space, and identity in liquid form.
+    </div>
+</div>
+
+<!-- SCENTS -->
+<div class="page" id="scents">
+
+    <h1>SCENTS</h1>
+
+    <div class="grid">
+
+        <div class="card eclipse">
+            <h3>ECLIPSE</h3>
+            <p>Dark magnetic amber shadow core.</p>
+            <button class="btn" style="background:#ff3c3c;color:white" onclick="add('ECLIPSE',8.99)">
+                ADD TO CART
+            </button>
+        </div>
+
+        <div class="card breeze">
+            <h3>BREEZE</h3>
+            <p>Soft cosmic vanilla air drift.</p>
+            <button class="btn" style="background:#50b4ff;color:white" onclick="add('BREEZE',8.99)">
+                ADD TO CART
+            </button>
+        </div>
+
+        <div class="card magnetico">
+            <h3>MAGNETICO</h3>
+            <p>Golden attraction energy field.</p>
+            <button class="btn" style="background:#ffd250;color:black" onclick="add('MAGNETICO',8.99)">
+                ADD TO CART
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- CHECKOUT -->
+<div class="page" id="checkout">
+
+    <h1>CHECKOUT</h1>
+
+    <input id="name" placeholder="Your Name">
+
+    <div class="checkout" id="cart"></div>
+
+    <h3 id="total"></h3>
+
+    <button onclick="order()"
+    style="
+    margin-top:20px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(90deg,#7f00ff,#00d4ff);
+    color:white;
+    font-weight:900;
+    cursor:pointer;">
+    COMPLETE ORDER VIA WHATSAPP
+    </button>
+
+</div>
+
+<script>
+
+let cart = [];
+
+function show(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+function add(name,price){
+    cart.push({name,price});
+    render();
+    show('checkout');
+}
+
+function render(){
+
+    let box = document.getElementById('cart');
+    let total = document.getElementById('total');
+
+    if(cart.length === 0){
+        box.innerHTML = "Cart empty";
+        total.innerHTML = "";
+        return;
+    }
+
+    let count = {};
+    let sum = 0;
+
+    cart.forEach(i=>{
+        sum += i.price;
+        count[i.name] = (count[i.name]||0)+1;
+    });
+
+    box.innerHTML = "";
+
+    for(let k in count){
+        box.innerHTML += `
+        <div class="item">
+            <span>${count[k]} × ${k}</span>
+            <span>$${(count[k]*8.99).toFixed(2)}</span>
+        </div>`;
+    }
+
+    let tax = sum * 0.10;
+    let shipping = 10;
+    let totalVal = sum + tax + shipping;
+
+    total.innerHTML =
+    `Subtotal: $${sum.toFixed(2)} | Tax: $${tax.toFixed(2)} | Shipping: $10 <br>
+     <b>Total: $${totalVal.toFixed(2)}</b>`;
+}
+
+function order(){
+
+    if(cart.length === 0){
+        alert("Cart empty");
+        return;
+    }
+
+    let name = document.getElementById("name").value || "Customer";
+
+    let count = {};
+    let sum = 0;
+
+    cart.forEach(i=>{
+        sum += i.price;
+        count[i.name] = (count[i.name]||0)+1;
+    });
+
+    let items = "";
+    for(let k in count){
+        items += `- ${count[k]} × ${k}\n`;
+    }
+
+    let tax = sum * 0.10;
+    let shipping = 10;
+    let total = sum + tax + shipping;
+
+    let msg =
+`ORION ORDER CONFIRMATION
+
+Name: ${name}
+
+Items:
+${items}
+
+Subtotal: $${sum.toFixed(2)}
+Tax: $${tax.toFixed(2)}
+Shipping: $10
+
+TOTAL: $${total.toFixed(2)}
+
+Please confirm my order.`;
+
+    let phone = "628133030489";
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(msg);
+
+    window.open(url, "_blank");
+}
+
+</script>
+
+</body>
+</html>
