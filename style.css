@@ -1948,7 +1948,7 @@ background:
 rgba(255,255,255,.04);  
   
 backdrop-filter:blur(22px);  
-  
+ 
 border:  
   
 1px solid rgba(255,255,255,.07);  
@@ -1962,3 +1962,851 @@ transition:.4s;
 transform:  
   
 translateY(-8
+
+/* ==================================================
+ORION V4
+STYLE.CSS
+PART 1F
+HTML Bottles • Reveal • Cursor • Progress
+================================================== */
+
+/* ==========================
+REVEAL ANIMATION
+========================== */
+
+.reveal{
+
+opacity:0;
+
+transform:
+translateY(80px);
+
+transition:
+
+opacity .9s ease,
+transform .9s ease;
+
+will-change:
+transform,opacity;
+
+}
+
+.reveal.active{
+
+opacity:1;
+
+transform:
+translateY(0);
+
+}
+
+/* ==========================
+CURSOR GLOW
+========================== */
+
+.cursor-glow{
+
+position:fixed;
+
+left:0;
+top:0;
+
+width:340px;
+height:340px;
+
+border-radius:50%;
+
+pointer-events:none;
+
+transform:
+translate(-50%,-50%);
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(73,108,255,.14),
+
+rgba(212,178,106,.08),
+
+transparent 72%
+
+);
+
+filter:blur(30px);
+
+z-index:0;
+
+mix-blend-mode:screen;
+
+}
+
+/* ==========================
+SCROLL PROGRESS
+========================== */
+
+.scroll-progress{
+
+position:fixed;
+
+top:0;
+left:0;
+
+height:3px;
+
+width:0;
+
+background:
+
+linear-gradient(
+
+90deg,
+
+#496cff,
+
+#d4b26a
+
+);
+
+z-index:999999;
+
+box-shadow:
+
+0 0 15px
+rgba(212,178,106,.45);
+
+}
+
+/* ==========================
+ACTIVE NAV
+========================== */
+
+nav a.active{
+
+color:white;
+
+}
+
+nav a.active::after{
+
+width:100%;
+
+}
+
+/* ==========================
+FAQ OPEN
+========================== */
+
+.faq-item.open{
+
+border-color:
+
+rgba(212,178,106,.35);
+
+background:
+
+rgba(255,255,255,.05);
+
+}
+
+/* ==========================
+ORION HERO BOTTLE
+========================== */
+
+.orion-bottle{
+
+position:relative;
+
+width:240px;
+
+height:470px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:flex-start;
+
+transform-style:
+
+preserve-3d;
+
+transition:
+
+transform .4s ease;
+
+}
+
+.bottle-glow{
+
+position:absolute;
+
+width:360px;
+height:360px;
+
+top:70px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(73,108,255,.22),
+
+transparent 70%
+
+);
+
+filter:blur(55px);
+
+}
+
+.bottle-cap{
+
+width:74px;
+height:62px;
+
+border-radius:
+
+16px 16px 8px 8px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#2b2f37,
+
+#111
+
+);
+
+box-shadow:
+
+0 10px 25px
+rgba(0,0,0,.4);
+
+z-index:5;
+
+}
+
+.bottle-neck{
+
+position:absolute;
+
+top:55px;
+
+width:40px;
+height:28px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#5e6470,
+
+#2a2d34
+
+);
+
+border-radius:8px;
+
+z-index:4;
+
+}
+
+.bottle-body{
+
+position:absolute;
+
+top:78px;
+
+width:220px;
+height:330px;
+
+border-radius:
+
+40px;
+
+overflow:hidden;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.18),
+
+rgba(255,255,255,.05)
+
+);
+
+border:
+
+1px solid
+rgba(255,255,255,.12);
+
+backdrop-filter:
+
+blur(30px);
+
+box-shadow:
+
+0 30px 80px
+rgba(0,0,0,.45);
+
+}
+
+/* ==========================
+GLASS REFLECTION
+========================== */
+
+.glass-reflection{
+
+position:absolute;
+
+left:24px;
+top:26px;
+
+width:26px;
+height:240px;
+
+border-radius:30px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.55),
+
+transparent
+
+);
+
+opacity:.65;
+
+}
+
+.glass-reflection.second{
+
+left:auto;
+
+right:26px;
+
+width:10px;
+
+opacity:.22;
+
+}
+
+/* ==========================
+LOGO
+========================== */
+
+.orion-logo{
+
+position:absolute;
+
+left:50%;
+
+top:92px;
+
+transform:
+
+translateX(-50%);
+
+font-family:
+
+"Cormorant Garamond",serif;
+
+font-size:34px;
+
+letter-spacing:6px;
+
+color:white;
+
+text-shadow:
+
+0 0 20px
+rgba(255,255,255,.2);
+
+}
+
+/* ==================================================
+ORION V4
+STYLE.CSS
+PART 1G (FINAL PATCH)
+Constellation • Perfume Cards • Mini Bottles
+================================================== */
+
+/* ==========================
+CONSTELLATION
+========================== */
+
+.constellation{
+
+position:absolute;
+
+inset:0;
+
+}
+
+.constellation span{
+
+position:absolute;
+
+width:6px;
+height:6px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+
+0 0 12px white,
+0 0 25px rgba(255,255,255,.5);
+
+animation:
+
+twinkle 3s infinite;
+
+}
+
+.constellation span:nth-child(1){
+
+top:80px;
+left:65px;
+
+}
+
+.constellation span:nth-child(2){
+
+top:130px;
+right:62px;
+
+animation-delay:.5s;
+
+}
+
+.constellation span:nth-child(3){
+
+top:185px;
+left:110px;
+
+animation-delay:1s;
+
+}
+
+.constellation span:nth-child(4){
+
+bottom:95px;
+right:80px;
+
+animation-delay:1.5s;
+
+}
+
+.constellation span:nth-child(5){
+
+bottom:55px;
+left:80px;
+
+animation-delay:2s;
+
+}
+
+/* ==========================
+PERFUME CARD
+========================== */
+
+.perfume-card{
+
+position:relative;
+
+width:360px;
+
+height:470px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.card-aura{
+
+position:absolute;
+
+width:340px;
+height:340px;
+
+border-radius:50%;
+
+filter:blur(70px);
+
+opacity:.45;
+
+}
+
+.card-aura.blue{
+
+background:
+
+radial-gradient(circle,
+rgba(73,108,255,.45),
+transparent 70%);
+
+}
+
+.card-aura.gold{
+
+background:
+
+radial-gradient(circle,
+rgba(212,178,106,.35),
+transparent 70%);
+
+}
+
+.card-aura.purple{
+
+background:
+
+radial-gradient(circle,
+rgba(120,80,255,.35),
+transparent 70%);
+
+}
+
+/* ==========================
+CARD BOTTLE
+========================== */
+
+.card-bottle{
+
+position:relative;
+
+width:180px;
+height:300px;
+
+border-radius:34px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.18),
+
+rgba(255,255,255,.06)
+
+);
+
+border:
+
+1px solid rgba(255,255,255,.12);
+
+backdrop-filter:blur(20px);
+
+box-shadow:
+
+0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.card-bottle.dark{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#222,
+
+#0f0f14
+
+);
+
+}
+
+.card-bottle.crystal{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.28),
+
+rgba(255,255,255,.08)
+
+);
+
+}
+
+.card-bottle .cap{
+
+position:absolute;
+
+top:-36px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:56px;
+height:36px;
+
+border-radius:10px 10px 4px 4px;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#444,
+
+#111
+
+);
+
+}
+
+/* ==========================
+LABEL
+========================== */
+
+.label{
+
+position:absolute;
+
+left:50%;
+top:50%;
+
+transform:
+
+translate(-50%,-50%);
+
+text-align:center;
+
+}
+
+.label h3{
+
+font-size:28px;
+
+letter-spacing:4px;
+
+color:white;
+
+margin-bottom:8px;
+
+}
+
+.label p{
+
+font-size:11px;
+
+letter-spacing:3px;
+
+text-transform:uppercase;
+
+color:var(--gold);
+
+}
+
+/* ==========================
+SHOP MINI BOTTLES
+========================== */
+
+.mini-bottle{
+
+width:90px;
+height:130px;
+
+margin:10px auto 30px;
+
+border-radius:18px;
+
+position:relative;
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.18),
+
+rgba(255,255,255,.05)
+
+);
+
+border:
+
+1px solid rgba(255,255,255,.12);
+
+}
+
+.mini-bottle::before{
+
+content:"";
+
+position:absolute;
+
+top:-18px;
+left:50%;
+
+transform:translateX(-50%);
+
+width:30px;
+height:18px;
+
+border-radius:6px 6px 3px 3px;
+
+background:#222;
+
+}
+
+.mini-bottle.nova{
+
+box-shadow:
+
+0 0 35px rgba(73,108,255,.25);
+
+}
+
+.mini-bottle.eclipse{
+
+box-shadow:
+
+0 0 35px rgba(212,178,106,.22);
+
+}
+
+.mini-bottle.aether{
+
+box-shadow:
+
+0 0 35px rgba(120,80,255,.22);
+
+}
+
+/* ==========================
+TWINKLE
+========================== */
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.3;
+
+transform:scale(1);
+
+}
+
+50%{
+
+opacity:1;
+
+transform:scale(1.8);
+
+}
+
+}
+
+/* ==========================
+SHOP TRANSITION
+========================== */
+
+.shop-transition{
+
+padding:220px 8%;
+
+text-align:center;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.shop-transition::before{
+
+content:"";
+
+position:absolute;
+
+left:50%;
+top:50%;
+
+transform:translate(-50%,-50%);
+
+width:700px;
+height:700px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(73,108,255,.08),
+
+transparent 70%
+
+);
+
+filter:blur(90px);
+
+}
+
+.transition-content{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.transition-content p{
+
+font-size:12px;
+
+letter-spacing:8px;
+
+text-transform:uppercase;
+
+color:var(--gold);
+
+margin-bottom:28px;
+
+}
+
+.transition-content h2{
+
+font-size:90px;
+
+line-height:.95;
+
+}
