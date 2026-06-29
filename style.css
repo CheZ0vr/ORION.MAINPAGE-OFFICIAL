@@ -1,0 +1,1964 @@
+/* ==================================================
+ORION V4
+STYLE.CSS
+PART 1A
+Foundation • Colors • Background
+================================================== */
+
+:root{
+
+--bg:#02040a;  
+--bg2:#07111d;  
+--bg3:#101826;  
+
+--white:#f7f7f5;  
+--text:#d5d9e3;  
+--muted:#8e96ab;  
+
+--gold:#d4b26a;  
+--gold-light:#f2d89c;  
+
+--blue:#496cff;  
+--purple:#6552ff;  
+
+--glass:rgba(255,255,255,.045);  
+
+--border:rgba(255,255,255,.07);  
+
+--shadow:  
+0 25px 90px rgba(0,0,0,.55);  
+
+--radius:26px;  
+
+--transition:.45s cubic-bezier(.2,.8,.2,1);
+
+}
+
+/* ==================================================
+RESET
+================================================== */
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:"Inter",sans-serif;
+
+background:#02040a;
+
+color:var(--white);
+
+overflow-x:hidden;
+
+line-height:1.8;
+
+letter-spacing:.2px;
+
+-webkit-font-smoothing:antialiased;
+
+}
+
+img{
+
+display:block;
+
+max-width:100%;
+
+}
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+transition:var(--transition);
+
+}
+
+button{
+
+font:inherit;
+
+border:none;
+
+background:none;
+
+cursor:pointer;
+
+transition:var(--transition);
+
+}
+
+section{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+/* ==================================================
+SCROLLBAR
+================================================== */
+
+::-webkit-scrollbar{
+
+width:11px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#03050a;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#263b8d,
+
+#d4b26a
+
+);
+
+border-radius:100px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+#4d67ff,
+
+#f0cf88
+
+);
+
+}
+
+/* ==================================================
+TEXT SELECTION
+================================================== */
+
+::selection{
+
+background:var(--gold);
+
+color:black;
+
+}
+
+/* ==================================================
+COSMIC BACKGROUND
+================================================== */
+
+.space{
+
+position:fixed;
+
+inset:0;
+
+z-index:-30;
+
+overflow:hidden;
+
+background:
+
+radial-gradient(circle at 18% 18%,
+rgba(80,92,255,.14),
+transparent 28%),
+
+radial-gradient(circle at 82% 75%,
+rgba(212,178,106,.08),
+transparent 34%),
+
+radial-gradient(circle at 60% -10%,
+rgba(120,80,255,.10),
+transparent 35%),
+
+linear-gradient(
+
+180deg,
+
+#04060c 0%,
+
+#050811 35%,
+
+#02040a 100%
+
+);
+
+}
+
+/* ==================================================
+NEBULA
+================================================== */
+
+.gradient-one{
+
+position:absolute;
+
+width:900px;
+
+height:900px;
+
+top:-260px;
+
+left:-260px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(74,98,255,.42),
+
+transparent 70%
+
+);
+
+filter:blur(160px);
+
+opacity:.45;
+
+animation:floatOne 22s ease-in-out infinite;
+
+}
+
+.gradient-two{
+
+position:absolute;
+
+width:850px;
+
+height:850px;
+
+right:-280px;
+
+bottom:-280px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(212,178,106,.18),
+
+transparent 72%
+
+);
+
+filter:blur(170px);
+
+opacity:.35;
+
+animation:floatTwo 24s ease-in-out infinite;
+
+}
+
+/* ==================================================
+STARS
+================================================== */
+
+.stars{
+
+position:absolute;
+
+inset:0;
+
+background-repeat:repeat;
+
+pointer-events:none;
+
+}
+
+.layer1{
+
+background-image:
+
+radial-gradient(#ffffff 1px,transparent 1px);
+
+background-size:80px 80px;
+
+opacity:.35;
+
+animation:starsMove 180s linear infinite;
+
+}
+
+.layer2{
+
+background-image:
+
+radial-gradient(#ffffff 1.6px,transparent 1.6px);
+
+background-size:170px 170px;
+
+opacity:.18;
+
+animation:starsMoveReverse 260s linear infinite;
+
+}
+
+.layer3{
+
+background-image:
+
+radial-gradient(
+
+rgba(212,178,106,.9) 2px,
+
+transparent 2px
+
+);
+
+background-size:280px 280px;
+
+opacity:.10;
+
+animation:starsMove 340s linear infinite;
+
+}
+
+/* ==================================================
+COSMIC NOISE
+================================================== */
+
+.noise{
+
+position:absolute;
+
+inset:0;
+
+background-image:
+
+repeating-radial-gradient(
+
+rgba(255,255,255,.02) 0,
+
+rgba(255,255,255,.02) 1px,
+
+transparent 2px,
+
+transparent 5px
+
+);
+
+mix-blend-mode:soft-light;
+
+opacity:.18;
+
+}
+
+/* ==================================================
+GLOBAL TYPOGRAPHY
+================================================== */
+
+h1,
+h2,
+h3{
+
+font-family:"Cormorant Garamond",serif;
+
+font-weight:600;
+
+letter-spacing:-1px;
+
+}
+
+p{
+
+color:var(--text);
+
+}
+
+.gold{
+
+color:var(--gold);
+
+}
+/* ==================================================
+ORION V4
+STYLE.CSS
+PART 1B
+Navbar • Hero • Buttons
+================================================== */
+
+/* ==========================
+LOADER
+========================== */
+
+#loader{
+
+position:fixed;
+inset:0;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:#02040a;
+
+z-index:99999;
+
+transition:1.2s ease;
+
+}
+
+#loader.hide{
+
+opacity:0;
+visibility:hidden;
+
+}
+
+.loader-content{
+
+text-align:center;
+
+}
+
+.loader-content h1{
+
+font-size:92px;
+
+letter-spacing:12px;
+
+color:white;
+
+text-shadow:
+
+0 0 30px rgba(255,255,255,.15),
+
+0 0 80px rgba(74,98,255,.25);
+
+animation:loaderFade 3s infinite;
+
+}
+
+.loader-content p{
+
+margin-top:16px;
+
+font-size:12px;
+
+letter-spacing:8px;
+
+text-transform:uppercase;
+
+color:#9fa8be;
+
+}
+
+/* ==========================
+NAVBAR
+========================== */
+
+#navbar{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+
+padding:26px 8%;
+
+z-index:1000;
+
+transition:.45s;
+
+}
+
+#navbar.scrolled{
+
+background:
+
+rgba(4,8,18,.68);
+
+backdrop-filter:blur(24px);
+
+border-bottom:
+
+1px solid rgba(255,255,255,.05);
+
+box-shadow:
+
+0 10px 40px rgba(0,0,0,.35);
+
+}
+
+.nav-wrapper{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.logo{
+
+font-size:38px;
+
+letter-spacing:8px;
+
+color:white;
+
+transition:.4s;
+
+}
+
+.logo:hover{
+
+color:var(--gold);
+
+text-shadow:
+
+0 0 20px rgba(212,178,106,.4);
+
+}
+
+nav{
+
+display:flex;
+
+gap:42px;
+
+}
+
+nav a{
+
+font-size:13px;
+
+letter-spacing:3px;
+
+text-transform:uppercase;
+
+color:#cfd4df;
+
+position:relative;
+
+}
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-8px;
+
+width:0;
+
+height:1px;
+
+background:var(--gold);
+
+transition:.35s;
+
+}
+
+nav a:hover{
+
+color:white;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+
+.shop-button{
+
+padding:16px 30px;
+
+border-radius:999px;
+
+border:
+
+1px solid rgba(212,178,106,.35);
+
+background:
+
+rgba(255,255,255,.03);
+
+backdrop-filter:blur(14px);
+
+transition:.4s;
+
+}
+
+.shop-button:hover{
+
+background:var(--gold);
+
+color:#111;
+
+box-shadow:
+
+0 0 40px rgba(212,178,106,.35);
+
+}
+
+/* ==========================
+HERO
+========================== */
+
+#hero{
+
+min-height:100vh;
+
+display:grid;
+
+grid-template-columns:1.05fr .95fr;
+
+align-items:center;
+
+gap:120px;
+
+padding:0 8%;
+
+position:relative;
+
+}
+
+.hero-left{
+
+max-width:720px;
+
+z-index:2;
+
+}
+
+.eyebrow{
+
+display:inline-block;
+
+margin-bottom:28px;
+
+letter-spacing:7px;
+
+font-size:12px;
+
+text-transform:uppercase;
+
+color:var(--gold);
+
+}
+
+.hero-left h1{
+
+font-size:96px;
+
+line-height:.92;
+
+margin-bottom:38px;
+
+max-width:700px;
+
+text-wrap:balance;
+
+}
+
+.hero-left h1 span{
+
+display:block;
+
+color:var(--gold);
+
+text-shadow:
+
+0 0 24px rgba(212,178,106,.22);
+
+}
+
+.hero-text{
+
+font-size:19px;
+
+line-height:2;
+
+max-width:520px;
+
+margin-bottom:46px;
+
+color:var(--text);
+
+}
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+}
+
+/* ==========================
+BUTTONS
+========================== */
+
+.primary{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:18px 42px;
+
+border-radius:999px;
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#d4b26a,
+
+#f1d89a
+
+);
+
+color:#111;
+
+font-weight:700;
+
+box-shadow:
+
+0 0 35px rgba(212,178,106,.25);
+
+}
+
+.primary:hover{
+
+transform:
+
+translateY(-4px);
+
+box-shadow:
+
+0 0 60px rgba(212,178,106,.45);
+
+}
+
+.secondary{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:18px 42px;
+
+border-radius:999px;
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+background:
+
+rgba(255,255,255,.03);
+
+backdrop-filter:blur(16px);
+
+color:white;
+
+}
+
+.secondary:hover{
+
+background:
+
+rgba(255,255,255,.08);
+
+border-color:
+
+rgba(212,178,106,.35);
+
+}
+
+/* ==========================
+HERO IMAGE
+========================== */
+
+.hero-right{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+
+}
+
+.hero-right::before{
+
+content:"";
+
+position:absolute;
+
+width:680px;
+
+height:680px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(73,108,255,.20),
+
+transparent 70%
+
+);
+
+filter:blur(70px);
+
+z-index:0;
+
+}
+
+.hero-image{
+
+position:relative;
+
+z-index:2;
+
+}
+
+.hero-image img{
+
+width:100%;
+
+max-width:560px;
+
+filter:
+
+drop-shadow(0 0 40px rgba(212,178,106,.18))
+
+drop-shadow(0 0 100px rgba(73,108,255,.18));
+
+animation:
+
+heroFloat 8s ease-in-out infinite;
+
+}
+
+/* ==========================
+SCROLL INDICATOR
+========================== */
+
+.scroll{
+
+position:absolute;
+
+left:50%;
+
+bottom:42px;
+
+transform:translateX(-50%);
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:14px;
+
+opacity:.85;
+
+}
+
+.scroll span{
+
+width:2px;
+
+height:72px;
+
+background:
+
+linear-gradient(
+
+transparent,
+
+var(--gold),
+
+transparent
+
+);
+
+animation:
+
+scrollLine 2.5s infinite;
+
+}
+
+.scroll p{
+
+font-size:11px;
+
+letter-spacing:6px;
+
+text-transform:uppercase;
+
+color:#9ea6bb;
+
+}
+
+/* ==================================================  
+ORION V4  
+STYLE.CSS  
+PART 1C  
+Story • Chapters • Collection  
+================================================== */  
+  
+/* ==========================  
+GLOBAL SECTION  
+========================== */  
+  
+.chapter,  
+.story-block,  
+.collection-intro,  
+.product-showcase,  
+.shop-transition{  
+  
+padding:180px 8%;  
+  
+position:relative;  
+  
+}  
+  
+.story-container{  
+  
+max-width:960px;  
+  
+margin:auto;  
+  
+position:relative;  
+  
+z-index:2;  
+  
+}  
+  
+.story-container.narrow{  
+  
+max-width:760px;  
+  
+}  
+  
+.story-container.wide{  
+  
+max-width:1200px;  
+  
+}  
+  
+/* ==========================  
+CHAPTER  
+========================== */  
+  
+.chapter{  
+  
+display:flex;  
+  
+justify-content:center;  
+  
+align-items:center;  
+  
+min-height:75vh;  
+  
+text-align:center;  
+  
+}  
+  
+.chapter.dark{  
+  
+min-height:100vh;  
+  
+}  
+  
+.chapter::before{  
+  
+content:"";  
+  
+position:absolute;  
+  
+width:700px;  
+  
+height:700px;  
+  
+background:  
+  
+radial-gradient(  
+  
+circle,  
+  
+rgba(73,108,255,.10),  
+  
+transparent 70%  
+  
+);  
+  
+filter:blur(80px);  
+  
+}  
+  
+.chapter-label,  
+.chapter-number{  
+  
+display:inline-block;  
+  
+font-size:12px;  
+  
+letter-spacing:8px;  
+  
+text-transform:uppercase;  
+  
+color:var(--gold);  
+  
+margin-bottom:26px;  
+  
+}  
+  
+.chapter h2{  
+  
+font-size:92px;  
+  
+line-height:.95;  
+  
+margin-bottom:26px;  
+  
+color:white;  
+  
+}  
+  
+.chapter-subtitle{  
+  
+font-size:21px;  
+  
+max-width:640px;  
+  
+margin:auto;  
+  
+color:var(--muted);  
+  
+line-height:1.9;  
+  
+}  
+  
+/* ==========================  
+STORY  
+========================== */  
+  
+.story-block{  
+  
+display:flex;  
+  
+justify-content:center;  
+  
+align-items:center;  
+  
+min-height:70vh;  
+  
+}  
+  
+.story-block::after{  
+  
+content:"";  
+  
+position:absolute;  
+  
+width:520px;  
+  
+height:520px;  
+  
+background:  
+  
+radial-gradient(  
+  
+circle,  
+  
+rgba(101,82,255,.06),  
+  
+transparent 70%  
+  
+);  
+  
+filter:blur(90px);  
+  
+}  
+  
+.story-block h2{  
+  
+font-size:76px;  
+  
+line-height:1.02;  
+  
+margin-bottom:34px;  
+  
+max-width:760px;  
+  
+}  
+  
+.story-block p{  
+  
+font-size:24px;  
+  
+line-height:2.1;  
+  
+color:var(--text);  
+  
+max-width:760px;  
+  
+}  
+  
+/* ==========================  
+CINEMATIC STORY  
+========================== */  
+  
+.story-block.cinematic{  
+  
+text-align:center;  
+  
+min-height:55vh;  
+  
+}  
+  
+.story-block.cinematic p{  
+  
+font-size:52px;  
+  
+line-height:1.35;  
+  
+color:white;  
+  
+font-family:  
+  
+"Cormorant Garamond",serif;  
+  
+text-shadow:  
+  
+0 0 25px rgba(255,255,255,.08);  
+  
+}  
+  
+/* ==========================  
+QUOTE  
+========================== */  
+  
+.quote-section{  
+  
+padding:220px 8%;  
+  
+text-align:center;  
+  
+position:relative;  
+  
+}  
+  
+.quote-section::before{  
+  
+content:"";  
+  
+position:absolute;  
+  
+width:650px;  
+  
+height:650px;  
+  
+left:50%;  
+  
+top:50%;  
+  
+transform:translate(-50%,-50%);  
+  
+background:  
+  
+radial-gradient(  
+  
+circle,  
+  
+rgba(212,178,106,.08),  
+  
+transparent 72%  
+  
+);  
+  
+filter:blur(90px);  
+  
+}  
+  
+.quote-line{  
+  
+width:180px;  
+  
+height:1px;  
+  
+margin:55px auto;  
+  
+background:  
+  
+linear-gradient(  
+  
+90deg,  
+  
+transparent,  
+  
+var(--gold),  
+  
+transparent  
+  
+);  
+  
+}  
+  
+.quote-section h2{  
+  
+font-size:82px;  
+  
+line-height:1.05;  
+  
+max-width:900px;  
+  
+margin:auto;  
+  
+position:relative;  
+  
+z-index:2;  
+  
+}  
+  
+/* ==========================  
+DIVIDER  
+========================== */  
+  
+.cinematic-divider{  
+  
+padding:260px 8%;  
+  
+text-align:center;  
+  
+position:relative;  
+  
+overflow:hidden;  
+  
+}  
+  
+.divider-stars{  
+  
+position:absolute;  
+  
+inset:0;  
+  
+background:  
+  
+radial-gradient(  
+  
+circle,  
+  
+rgba(255,255,255,.05),  
+  
+transparent 75%  
+  
+);  
+  
+}  
+  
+.cinematic-divider h2{  
+  
+font-size:88px;  
+  
+line-height:1;  
+  
+position:relative;  
+  
+z-index:2;  
+  
+}  
+  
+.cinematic-divider p{  
+  
+margin-top:40px;  
+  
+font-size:13px;  
+  
+letter-spacing:6px;  
+  
+text-transform:uppercase;  
+  
+color:var(--gold);  
+  
+position:relative;  
+  
+z-index:2;  
+  
+}  
+  
+/* ==========================  
+COLLECTION INTRO  
+========================== */  
+  
+.collection-intro{  
+  
+display:flex;  
+  
+justify-content:center;  
+  
+align-items:center;  
+  
+min-height:70vh;  
+  
+text-align:center;  
+  
+}  
+  
+.collection-heading{  
+  
+max-width:900px;  
+  
+margin:auto;  
+  
+}  
+  
+.collection-heading h2{  
+  
+font-size:102px;  
+  
+line-height:.92;  
+  
+margin-bottom:40px;  
+  
+}  
+  
+.collection-heading p{  
+  
+font-size:22px;  
+  
+line-height:2;  
+  
+color:var(--muted);  
+  
+}  
+  
+/* ==========================  
+PRODUCT SHOWCASE  
+========================== */  
+  
+.product-showcase{  
+  
+display:grid;  
+  
+grid-template-columns:1fr 1fr;  
+  
+align-items:center;  
+  
+gap:110px;  
+  
+min-height:100vh;  
+  
+}  
+  
+.product-showcase.reverse{  
+  
+direction:rtl;  
+  
+}  
+  
+.product-showcase.reverse>*{  
+  
+direction:ltr;  
+  
+}  
+  
+/* ==========================  
+PRODUCT IMAGE  
+========================== */  
+  
+.product-image{  
+  
+display:flex;  
+  
+justify-content:center;  
+  
+align-items:center;  
+  
+position:relative;  
+  
+}  
+  
+.product-image::before{  
+  
+content:"";  
+  
+position:absolute;  
+  
+width:560px;  
+  
+height:560px;  
+  
+border-radius:50%;  
+  
+background:  
+  
+radial-gradient(  
+  
+circle,  
+  
+rgba(73,108,255,.14),  
+  
+transparent 70%  
+  
+);  
+  
+filter:blur(70px);  
+  
+}  
+  
+.product-image img{  
+  
+max-width:560px;  
+  
+border-radius:28px;  
+  
+filter:  
+  
+drop-shadow(0 0 30px rgba(212,178,106,.15))  
+  
+drop-shadow(0 0 90px rgba(73,108,255,.15));  
+  
+transition:.7s;  
+  
+}  
+  
+.product-showcase:hover .product-image img{  
+  
+transform:  
+  
+translateY(-12px)  
+  
+scale(1.03);  
+  
+}  
+  
+/* ==========================  
+PRODUCT CONTENT  
+========================== */  
+  
+.product-content span{  
+  
+display:block;  
+  
+margin-bottom:18px;  
+  
+font-size:13px;  
+  
+letter-spacing:6px;  
+  
+text-transform:uppercase;  
+  
+color:var(--gold);  
+  
+}  
+  
+.product-content h2{  
+  
+font-size:78px;  
+  
+line-height:.95;  
+  
+margin-bottom:24px;  
+  
+}  
+  
+.tagline{  
+  
+font-size:28px;  
+  
+color:var(--gold);  
+  
+margin-bottom:28px;  
+  
+}  
+  
+.product-content p{  
+  
+font-size:19px;  
+  
+line-height:2;  
+  
+color:var(--text);  
+  
+max-width:540px;  
+  
+margin-bottom:34px;  
+  
+}  
+  
+.product-content ul{  
+  
+display:grid;  
+  
+grid-template-columns:repeat(2,1fr);  
+  
+gap:18px;  
+  
+list-style:none;  
+  
+margin-bottom:44px;  
+  
+}  
+  
+.product-content li{  
+  
+padding:16px 20px;  
+  
+background:  
+  
+rgba(255,255,255,.03);  
+  
+border:  
+  
+1px solid rgba(255,255,255,.07);  
+  
+border-radius:18px;  
+  
+backdrop-filter:blur(16px);  
+  
+transition:.35s;  
+  
+}  
+  
+.product-content li:hover{  
+  
+border-color:  
+  
+rgba(212,178,106,.35);  
+  
+transform:  
+  
+translateY(-3px);  
+  
+}  
+  
+.buy-button{  
+  
+display:inline-flex;  
+  
+justify-content:center;  
+  
+align-items:center;  
+  
+padding:18px 38px;  
+  
+border-radius:999px;  
+  
+background:  
+  
+linear-gradient(  
+  
+135deg,  
+  
+#d4b26a,  
+  
+#f2d89c  
+  
+);  
+  
+color:#111;  
+  
+font-weight:700;  
+  
+box-shadow:  
+  
+0 0 35px rgba(212,178,106,.25);  
+  
+transition:.4s;  
+  
+}  
+  
+.buy-button:hover{  
+  
+transform:  
+  
+translateY(-4px);  
+  
+box-shadow:  
+  
+0 0 60px rgba(212,178,106,.45);  
+  
+}  
+/* ==================================================  
+ORION V4  
+STYLE.CSS  
+PART 1D  
+Shop • Features • Reviews • FAQ  
+================================================== */  
+  
+/* ==========================  
+SHOP  
+========================== */  
+  
+.shop-home{  
+  
+padding:180px 8%;  
+  
+position:relative;  
+  
+}  
+  
+.shop-home::before{  
+  
+content:"";  
+  
+position:absolute;  
+  
+top:0;  
+left:50%;  
+  
+transform:translateX(-50%);  
+  
+width:900px;  
+height:900px;  
+  
+background:  
+  
+radial-gradient(  
+circle,  
+rgba(73,108,255,.08),  
+transparent 70%  
+);  
+  
+filter:blur(100px);  
+  
+}  
+  
+.shop-header{  
+  
+position:relative;  
+  
+z-index:2;  
+  
+text-align:center;  
+  
+margin-bottom:90px;  
+  
+}  
+  
+.shop-header p{  
+  
+font-size:12px;  
+  
+letter-spacing:8px;  
+  
+text-transform:uppercase;  
+  
+color:var(--gold);  
+  
+margin-bottom:18px;  
+  
+}  
+  
+.shop-header h2{  
+  
+font-size:84px;  
+  
+line-height:.95;  
+  
+}  
+  
+.shop-grid{  
+  
+display:grid;  
+  
+grid-template-columns:  
+  
+repeat(3,1fr);  
+  
+gap:36px;  
+  
+position:relative;  
+  
+z-index:2;  
+  
+}  
+  
+.shop-card{  
+  
+background:  
+  
+rgba(255,255,255,.04);  
+  
+backdrop-filter:blur(24px);  
+  
+border:  
+  
+1px solid rgba(255,255,255,.07);  
+  
+border-radius:30px;  
+  
+padding:34px;  
+  
+transition:.45s;  
+  
+overflow:hidden;  
+  
+position:relative;  
+  
+}  
+  
+.shop-card::before{  
+  
+content:"";  
+  
+position:absolute;  
+  
+inset:0;  
+  
+background:  
+  
+linear-gradient(  
+  
+180deg,  
+  
+rgba(255,255,255,.06),  
+  
+transparent 60%  
+  
+);  
+  
+opacity:0;  
+  
+transition:.4s;  
+  
+}  
+  
+.shop-card:hover{  
+  
+transform:  
+  
+translateY(-14px);  
+  
+border-color:  
+  
+rgba(212,178,106,.35);  
+  
+box-shadow:  
+  
+0 0 60px rgba(73,108,255,.15);  
+  
+}  
+  
+.shop-card:hover::before{  
+  
+opacity:1;  
+  
+}  
+  
+.shop-card img{  
+  
+border-radius:22px;  
+  
+margin-bottom:28px;  
+  
+}  
+  
+.shop-card h3{  
+  
+font-size:36px;  
+  
+margin-bottom:10px;  
+  
+}  
+  
+.shop-card p{  
+  
+color:var(--muted);  
+  
+margin-bottom:18px;  
+  
+}  
+  
+.shop-card h4{  
+  
+font-size:28px;  
+  
+color:var(--gold);  
+  
+margin-bottom:26px;  
+  
+}  
+  
+.shop-card button{  
+  
+width:100%;  
+  
+padding:18px;  
+  
+border-radius:999px;  
+  
+background:  
+  
+linear-gradient(  
+  
+135deg,  
+  
+#d4b26a,  
+  
+#efd593  
+  
+);  
+  
+color:#111;  
+  
+font-weight:700;  
+  
+transition:.35s;  
+  
+}  
+  
+.shop-card button:hover{  
+  
+transform:translateY(-3px);  
+  
+box-shadow:  
+  
+0 0 35px rgba(212,178,106,.35);  
+  
+}  
+  
+/* ==========================  
+SHOP EXPERIENCE  
+========================== */  
+  
+.shop-experience{  
+  
+padding:200px 8%;  
+  
+}  
+  
+.experience-wrapper{  
+  
+display:grid;  
+  
+grid-template-columns:1fr 1fr;  
+  
+gap:100px;  
+  
+align-items:center;  
+  
+}  
+  
+.experience-label{  
+  
+font-size:12px;  
+  
+letter-spacing:8px;  
+  
+color:var(--gold);  
+  
+margin-bottom:20px;  
+  
+}  
+  
+.experience-left h2{  
+  
+font-size:82px;  
+  
+line-height:.95;  
+  
+margin-bottom:30px;  
+  
+}  
+  
+.experience-left p{  
+  
+font-size:19px;  
+  
+line-height:2;  
+  
+color:var(--text);  
+  
+}  
+  
+.experience-right{  
+  
+display:grid;  
+  
+gap:28px;  
+  
+}  
+  
+.glass-card{  
+  
+padding:36px;  
+  
+border-radius:28px;  
+  
+background:  
+  
+rgba(255,255,255,.04);  
+  
+backdrop-filter:blur(22px);  
+  
+border:  
+  
+1px solid rgba(255,255,255,.07);  
+  
+transition:.4s;  
+  
+}  
+  
+.glass-card:hover{  
+  
+transform:  
+  
+translateY(-8
